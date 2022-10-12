@@ -5,5 +5,6 @@ const router = express.Router()
 router
 .route('/')
 .get(jobControllers.getAllJobs)
+.post(jobControllers.CreateAJob)
 
 module.exports = router

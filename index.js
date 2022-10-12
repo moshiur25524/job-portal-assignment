@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config()
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const mongoose = require('mongoose');
 const app = express()
 const port = process.env.PORT || 8080;
 
@@ -9,6 +10,11 @@ const port = process.env.PORT || 8080;
 
 app.use(cors())
 app.use(express.json())
+
+// Routes 
+
+const jobsRoutes = require('./routes/jobs.route');
+
 
 
 
@@ -20,11 +26,15 @@ async function run() {
         client.connect()
         const jobsCollection = client.db("JobPortal").collection("jobs");
         console.log('Db is connected');
+
+        app.use('api/v1/jobs', jobsRoutes)
     }
     finally {
         // await client.close()
     }
 }
+
+mongoose.connect()
 
 run().catch(console.dir);
 
