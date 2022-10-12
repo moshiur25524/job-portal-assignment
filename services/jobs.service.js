@@ -16,7 +16,7 @@ exports.getAJobPortalService = async(jobId) =>{
     return job
 }
 
-exports.updateAJobPortalService = async(data, id) =>{
-    const result = await Jobs.updateOne({_id: id}, data)
+exports.updateAJobPortalService = async(id, data) =>{
+    const result = await Jobs.updateOne({_id: id},data ,{ runValidators:true})
     return result
 }
