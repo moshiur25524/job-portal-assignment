@@ -7,4 +7,8 @@ router
 .get(jobControllers.getAllJobs)
 .post(jobControllers.CreateAJob)
 
+router
+.route('/:id')
+.get(jobControllers.getAJobPortal)
+.patch(jobControllers.updateAJobPortal)
 module.exports = router
